@@ -31,11 +31,26 @@ function Todo() {
     e.target.classList.toggle('has-text-grey-light')
   }
 
+  const [todo, setTodo] = useState('')
+
+  const hanleKeyDown= (e) => {
+    if(e.key === 'Enter'){
+      putItems((items) => {
+        items = [...items, { key: getKey(), text: todo, done:   false }];
+        return items;
+      })
+      
+      setTodo('')
+      
+    }
+  }
+  
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
+      <input value = {todo} class="input" type="text" placeholder='Todoを入力してください' onKeyDown={e => hanleKeyDown(e)} onInput={e => setTodo(e.target.value)} />
       {items.map(item => (
         <TodoItem item={item} changeClick={e => changeClick(e)} />
       ))}
