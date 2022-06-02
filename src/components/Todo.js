@@ -27,13 +27,17 @@ function Todo() {
     /* テストコード 終了 */
   ]);
 
+  const changeClick =(e) => {
+    e.target.classList.toggle('has-text-grey-light')
+  }
+
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
       {items.map(item => (
-        <TodoItem item={item} />
+        <TodoItem item={item} changeClick={e => changeClick(e)} />
       ))}
 
       

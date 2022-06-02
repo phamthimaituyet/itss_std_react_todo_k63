@@ -4,9 +4,9 @@
 　・チェックボックスにチェックが入っているか管理する
 　・チェックボックスにチェックが入っているかアイテムをグレーアウトする
 */
-function TodoItem({item}  ) {
+function TodoItem({item, changeClick}  ) {
   return (
-    <label className="panel-block">
+    <label onClick={changeClick} className="panel-block">
             <input type="checkbox" />
             {item.text}
     </label>
