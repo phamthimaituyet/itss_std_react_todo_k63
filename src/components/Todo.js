@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 /* コンポーネント */
 import TodoItem from './TodoItem';
-import Input from './Input';
+
 import Filter from './Filter';
 
 /* カスタムフック */
@@ -83,7 +83,13 @@ function Todo() {
       ))}
       <div className="panel-block">
         {displayItems().length} items
+      </div> 
+      <div className="panel-block">
+        <button className="button is-light is-fullwidth" onClick={clearItems}>
+          ToDoを削除
+        </button>
       </div>
+
 
     </div>
   );
