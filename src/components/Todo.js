@@ -19,30 +19,15 @@ import useStorage from '../hooks/storage';
 import {getKey} from "../lib/util";
 
 function Todo() {
-  const [items, putItems] = React.useState([
-      /* テストコード 開始 */
-    { key: getKey(), text: '日本語の宿題', done: false },
-    { key: getKey(), text: 'reactを勉強する', done: false },
-    { key: getKey(), text: '明日の準備をする', done: false },
-    /* テストコード 終了 */
-  ]);
-
-  const changeClick =(e) => {
-    e.target.classList.toggle('has-text-grey-light')
-  }
-
+  const [items, putItems, clearItems] = useStorage();
   const [todo, setTodo] = useState('')
   const [tab, setTab] = useState('全て')
 
   const hanleKeyDown= (e) => {
     if(e.key === 'Enter'){
-      putItems((items) => {
-        items = [...items, { key: getKey(), text: todo, done:   false }];
-        return items;
-      })
-      
-      setTodo('')
-      
+      const newItems = [...items, { key: getKey(), text: todo, done: false }];
+      putItems(newItems)
+      setTodo('')    
     }
   }
 
