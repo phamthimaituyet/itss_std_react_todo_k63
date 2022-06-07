@@ -7,3 +7,18 @@
 .has-text-grey-light{
   background-color : grey;
 }
+
+ul{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+li{
+  padding: 10px;
+  cursor: pointer;
+}
+
+li.is-active{
+  color: blue;
+}
